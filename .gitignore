@@ -1,0 +1,18 @@
+# Binaries
+/bin/
+/dist/
+/goji
+
+# Build artifacts
+*.out
+*.test
+coverage.txt
+
+# Runtime
+log/
+workspaces/
+
+# Editors
+.DS_Store
+.vscode/
+.idea/
