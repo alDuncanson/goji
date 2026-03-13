@@ -91,6 +91,9 @@ func (m *Manager) RunAfterRunHook(ctx context.Context, cfg config.ServiceConfig,
 	if strings.TrimSpace(cfg.Hooks.AfterRun) == "" {
 		return
 	}
+	if _, err := os.Stat(workspacePath); errors.Is(err, os.ErrNotExist) {
+		return
+	}
 	if err := m.runHook(ctx, cfg, workspacePath, issue, "after_run", cfg.Hooks.AfterRun, false); err != nil {
 		m.logger.Warn("after_run hook failed", "issue_id", issue.ID, "issue_identifier", issue.Identifier, "error", err)
 	}
